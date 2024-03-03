@@ -58,7 +58,7 @@ body{
     margin: 2%;
 }
 
-.mainpageButton > *{
+.mainpageButton > button{
     padding: 45px;
     width: 250px;
     font-size: large;
@@ -66,9 +66,15 @@ body{
 
 .buttonsMP{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 5%;
+}
+.findEmployee{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3%;
 }
 
 .showInfo{
@@ -108,13 +114,13 @@ body{
 .error{
     color: red;
 }
-.formContainer{
+.form-container{
     width: 100%;
     max-width: 600px; 
     margin: 5% auto; 
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     display: flex;
@@ -122,6 +128,13 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
+    
+}
+
+
+form {
+    text-align: center;
+}
+form > *{
+    margin-top: 1%;
 }

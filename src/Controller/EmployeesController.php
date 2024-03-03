@@ -118,6 +118,7 @@ class EmployeesController extends AbstractController
     #[Route("/employee/add", name: "add_employee")]
     public function addEmployee(Request $request, EmployeesRepository $employeeRep)
     {
+        $errors = [];
         $employee = new Employees();
         $form = $this->createFormBuilder($employee)->add("name")
             ->add("dni")->add("birthDate", DateType::class, ['widget' => 'single_text'])->add("dateStartCompany", DateType::class, ['widget' => 'single_text'])
@@ -127,8 +128,13 @@ class EmployeesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
             $dateEndCompany = $employee->getDateEndCompany();
+            $dateStartCompany = $employee->getDateStartCompany();
+            if ($dateEndCompany != null && $dateStartCompany > $dateEndCompany){
+             $errors.push("Date of the end of the relationship must be after the date of the start");   
+            }
+            dd($errors);
             if ($dateEndCompany == null) {
-                $employee->setDateEndCompany(new DateTime("1111-11-11"));
+                $employee->setDateEndCompany(new DateTime("9999-99-99"));
             }
             $employeeRep->add($post);
             $this->addFlash('success', 'Your employee has been addded.');
@@ -138,19 +144,25 @@ class EmployeesController extends AbstractController
     #[Route("/employee/edit/{id}", name: "edit_employee")]
     public function editEmployee($id, Request $request, EmployeesRepository $employeeRep)
     {
+        $errors = [];
         $employee = $employeeRep->find($id);
         $form = $this->createFormBuilder($employee)->add("name")
             ->add("dni")->add("birthDate", DateType::class, ['widget' => 'single_text'])->add("dateStartCompany", DateType::class, ['widget' => 'single_text'])
             ->add("dateEndCompany", DateType::class, ["required" => false, 'widget' => 'single_text'])->add("position")->add("salary")
             ->add("working")->getForm();
-        $dateEndCompany = $form->get('dateEndCompany')->getData();
+            $dateEndCompany = $form->get('dateEndCompany')->getData();
+            $dateStartCompany = $form->get('dateStartCompany')->getData();
+            
         if ($dateEndCompany === null) {
             $form->get('dateEndCompany')->setData(new DateTime("1111-11-11"));
         }
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
-
+            if ($dateEndCompany != null && $dateStartCompany > $dateEndCompany){
+                $errors.push("Date of the end of the relationship must be after the date of the start");   
+                dd($errors);
+               }
             $employeeRep->add($post);
             $this->addFlash('success', 'Your employee has been edited.');
         }

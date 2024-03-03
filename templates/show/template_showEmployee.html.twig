@@ -5,10 +5,10 @@
 		{{ employee.dni }}</p>
 	<p>Birth date:
 		{{ employee.birthDate|date("d/m/Y") }}</p>
-	<p>In the company since:
+	<p>Employed since:
 		{{ employee.dateStartCompany|date("d/m/Y") }}</p>
 		{% if not employee.working %}
-			<p>End of the relationship:
+			<p>End date:
 		{{ employee.dateEndCompany|date("d/m/Y") }}</p>
 		{% endif %}
 	<p>Position:
