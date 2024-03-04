@@ -44,6 +44,7 @@ return [
                 .'|/employee/(?'
                     .'|show/([^/]++)(*:228)'
                     .'|edit/([^/]++)(*:249)'
+                    .'|remove/([^/]++)(*:272)'
                 .')'
             .')/?$}sDu',
     ],
@@ -57,8 +58,9 @@ return [
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         228 => [[['_route' => 'show_one_employee', '_controller' => 'App\\Controller\\EmployeesController::showOneEmployee'], ['id'], null, null, false, true, null]],
-        249 => [
-            [['_route' => 'edit_employee', '_controller' => 'App\\Controller\\EmployeesController::editEmployee'], ['id'], null, null, false, true, null],
+        249 => [[['_route' => 'edit_employee', '_controller' => 'App\\Controller\\EmployeesController::editEmployee'], ['id'], null, null, false, true, null]],
+        272 => [
+            [['_route' => 'remove_employee', '_controller' => 'App\\Controller\\EmployeesController::removeEmplyee'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

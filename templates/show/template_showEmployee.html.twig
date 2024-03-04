@@ -19,10 +19,13 @@
 		{{ employee.working ? "Working" : "Not working" }}</p>
 	<div id="showEmployeesButtons">
 	{% if not hideElement %}
-		<a href="{{ path("show_one_employee", {id: employee.id}) }}"><input type="button" class="buttons" value="Show"/>
+		<a href="{{ path("show_one_employee", {id: employee.id}) }}"><input type="button" class="buttons" value="Show"/></a>
 	{% endif %}
         <a href="{{ path("edit_employee", {id: employee.id}) }}"><input type="button" class="buttons" value="Edit"/>
 	</a>
+	    <a href="{{ path("remove_employee", {id: employee.id}) }}"><input type="button" class="buttons" value="Remove"/>
+	</a>
+	
 	</div>
 </div>
 {% else %}

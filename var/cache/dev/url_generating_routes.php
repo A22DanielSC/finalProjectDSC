@@ -25,6 +25,7 @@ return [
     'edit_employee' => [['id'], ['_controller' => 'App\\Controller\\EmployeesController::editEmployee'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/employee/edit']], [], [], []],
     'find_one_employee' => [[], ['_controller' => 'App\\Controller\\EmployeesController::findEmployee'], [], [['text', '/employee/find']], [], [], []],
     'find_employee' => [[], ['_controller' => 'App\\Controller\\EmployeesController::formToFindEmployee'], [], [['text', '/employee/findEmployees']], [], [], []],
+    'remove_employee' => [['id'], ['_controller' => 'App\\Controller\\EmployeesController::removeEmplyee'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/employee/remove']], [], [], []],
     'App\Controller\EmployeesController::homepage' => [[], ['_controller' => 'App\\Controller\\EmployeesController::homepage'], [], [['text', '/']], [], [], []],
     'App\Controller\EmployeesController::addDefaultData' => [[], ['_controller' => 'App\\Controller\\EmployeesController::addDefaultData'], [], [['text', '/addDefaultData']], [], [], []],
     'App\Controller\EmployeesController::showAllEmployees' => [[], ['_controller' => 'App\\Controller\\EmployeesController::showAllEmployees'], [], [['text', '/employee/showall']], [], [], []],
@@ -33,4 +34,5 @@ return [
     'App\Controller\EmployeesController::editEmployee' => [['id'], ['_controller' => 'App\\Controller\\EmployeesController::editEmployee'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/employee/edit']], [], [], []],
     'App\Controller\EmployeesController::findEmployee' => [[], ['_controller' => 'App\\Controller\\EmployeesController::findEmployee'], [], [['text', '/employee/find']], [], [], []],
     'App\Controller\EmployeesController::formToFindEmployee' => [[], ['_controller' => 'App\\Controller\\EmployeesController::formToFindEmployee'], [], [['text', '/employee/findEmployees']], [], [], []],
+    'App\Controller\EmployeesController::removeEmplyee' => [['id'], ['_controller' => 'App\\Controller\\EmployeesController::removeEmplyee'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/employee/remove']], [], [], []],
 ];

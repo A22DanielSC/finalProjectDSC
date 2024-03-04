@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Employees;
 use App\Repository\EmployeesRepository;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -128,13 +129,9 @@ class EmployeesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
             $dateEndCompany = $employee->getDateEndCompany();
-            $dateStartCompany = $employee->getDateStartCompany();
-            if ($dateEndCompany != null && $dateStartCompany > $dateEndCompany){
-             $errors.push("Date of the end of the relationship must be after the date of the start");   
-            }
-            dd($errors);
+            //$dateStartCompany = $employee->getDateStartCompany();
             if ($dateEndCompany == null) {
-                $employee->setDateEndCompany(new DateTime("9999-99-99"));
+                $employee->setDateEndCompany(new DateTime("1111-11-11"));
             }
             $employeeRep->add($post);
             $this->addFlash('success', 'Your employee has been addded.');
@@ -151,7 +148,6 @@ class EmployeesController extends AbstractController
             ->add("dateEndCompany", DateType::class, ["required" => false, 'widget' => 'single_text'])->add("position")->add("salary")
             ->add("working")->getForm();
             $dateEndCompany = $form->get('dateEndCompany')->getData();
-            $dateStartCompany = $form->get('dateStartCompany')->getData();
             
         if ($dateEndCompany === null) {
             $form->get('dateEndCompany')->setData(new DateTime("1111-11-11"));
@@ -159,10 +155,6 @@ class EmployeesController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
-            if ($dateEndCompany != null && $dateStartCompany > $dateEndCompany){
-                $errors.push("Date of the end of the relationship must be after the date of the start");   
-                dd($errors);
-               }
             $employeeRep->add($post);
             $this->addFlash('success', 'Your employee has been edited.');
         }
@@ -192,5 +184,12 @@ class EmployeesController extends AbstractController
         } else {
             return $this->render("./show/findEmployee.html.twig", ["title" => "Find one employee", "hideElement" => true, "form" => $form]);
         }
+    }
+    #[Route("/employee/remove/{id}", name: "remove_employee")]
+    public function removeEmplyee($id, EmployeesRepository $employeeRep, EntityManagerInterface $entityManagerInterface){
+        $employee = $employeeRep->find($id);
+        $entityManagerInterface->remove($employee);
+        $entityManagerInterface->flush();
+        return $this->redirectToRoute("show_all_employees",  [], Response::HTTP_SEE_OTHER);
     }
 }
