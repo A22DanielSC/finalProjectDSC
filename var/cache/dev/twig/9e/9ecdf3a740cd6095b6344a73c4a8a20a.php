@@ -98,14 +98,14 @@ class __TwigTemplate_a578049f455b26ebbe94564135f7354b extends Template
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_all_employees");
         echo ">
-\t\t\t\t<button>Show employees</button>
+\t\t\t\t<button>Show all employees</button>
 \t\t\t</a>
 
 \t\t\t<a class=\"mainpageButton\" href=";
         // line 14
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_employee");
         echo ">
-\t\t\t\t<button>Add employee</button>
+\t\t\t\t<button>Add new employee</button>
 \t\t\t</a>
 \t\t</div>
 \t\t\t<div class=\"findEmployee\">
@@ -113,7 +113,7 @@ class __TwigTemplate_a578049f455b26ebbe94564135f7354b extends Template
         // line 19
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("find_employee");
         echo ">
-\t\t\t\t\t<button >Find an employee</button>
+\t\t\t\t\t<button >Find an employee by DNI</button>
 \t\t\t\t</a>
 \t\t\t</div>
 \t</div>
@@ -162,16 +162,16 @@ class __TwigTemplate_a578049f455b26ebbe94564135f7354b extends Template
 \t\t{{ parent() }}
 \t\t<div class=\"buttonsMP\">
 \t\t\t<a class=\"mainpageButton\" href={{ path('show_all_employees') }}>
-\t\t\t\t<button>Show employees</button>
+\t\t\t\t<button>Show all employees</button>
 \t\t\t</a>
 
 \t\t\t<a class=\"mainpageButton\" href={{ path('add_employee') }}>
-\t\t\t\t<button>Add employee</button>
+\t\t\t\t<button>Add new employee</button>
 \t\t\t</a>
 \t\t</div>
 \t\t\t<div class=\"findEmployee\">
 \t\t\t\t<a class=\"mainpageButton\" href={{ path(\"find_employee\") }}>
-\t\t\t\t\t<button >Find an employee</button>
+\t\t\t\t\t<button >Find an employee by DNI</button>
 \t\t\t\t</a>
 \t\t\t</div>
 \t</div>

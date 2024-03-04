@@ -52,6 +52,7 @@ body{
 .container{
     background-color: #6c6c77;
     border-radius: 15px;
+    padding-bottom: 20px;
 }
 
 .mainpageButton{
@@ -62,6 +63,7 @@ body{
     padding: 45px;
     width: 250px;
     font-size: large;
+    border-radius: 15px;
 }
 
 .buttonsMP{
@@ -69,7 +71,10 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 5%;
+    margin-top: 5%;
+}
+.buttonsMP>a>button{
+    height: 150px;
 }
 .findEmployee{
     display: flex;
@@ -114,27 +119,34 @@ body{
 .error{
     color: red;
 }
-.form-container{
+.form-container {
     width: 100%;
-    max-width: 600px; 
-    margin: 5% auto; 
+    max-width: 600px;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 15px;
     background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.form-container form {
+    width: 100%;
+    text-align: center;
+}
+
+.form-container form > * {
+    margin-top: 1%;
+}
+.form-container form input {
+    width: calc(50%); /* Calcula el ancho de los inputs restando 10px para compensar el margen */
     
 }
 
-
-form {
-    text-align: center;
-}
-form > *{
-    margin-top: 1%;
+.form-container form button {
+    width: calc(20% - 10px); /* Calcula el ancho del botón restando 10px para compensar el margen */
 }
